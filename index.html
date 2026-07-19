@@ -1,666 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Freight & Logistics Services | Air, Sea & Ground Shipping</title>
-<meta name="description" content="Reliable global logistics solutions — air freight, ocean freight, ground delivery, customs clearance & warehousing. Get a free quote today.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --blue:#003366;
-    --blue-deep:#ebebeb;
-    --royal-blue:#1337d6;
-    --cyan:#00BCD4;
-    --gray:#666666;
-    --gray-light:#f4f6f8;
-    --white:#FFFFFF;
-    --border:#e4e8ec;
-    --shadow: 0 10px 30px rgba(0,51,102,0.08);
-    --radius: 14px;
-    --maxw: 1200px;
-    --speed: .5s;
-
-    /* btn primary colors whatsapp */
-    --whatsapp-green: #25D366;
-    --whatsapp-green-dark: #128C7E;
-    --whatsapp-green-hover: #1EBE5D;
-    --white: #FFFFFF;
-
-     /* btn tertiary colors - Call (Orange) */
-    --call-orange: #FF6F00;
-    --call-orange-hover: #E65100;
-     --white: #FFFFFF;
-  }
-
-  *,*::before,*::after{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0;
-    font-family:'Open Sans', sans-serif;
-    color:#1c1c1c;
-    background:var(--white);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,h4{
-    font-family:'Montserrat', sans-serif;
-    font-weight:700;
-    line-height:1.2;
-    margin:0 0 .6em;
-    color:var(--blue);
-  }
-  p{ margin:0 0 1em; color:var(--gray); }
-  a{ color:inherit; text-decoration:none; }
-  ul{ list-style:none; margin:0; padding:0; }
-  img{ max-width:100%; display:block; }
-  section{ padding:88px 24px; }
-  .container{ max-width:var(--maxw); margin:0 auto; }
-  .eyebrow{
-    display:inline-block;
-    font-family:'Montserrat',sans-serif;
-    font-weight:700;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    font-size:.78rem;
-    color:var(--cyan);
-    margin-bottom:14px;
-  }
-  .section-header{ max-width:680px; margin:0 auto 56px; text-align:center; }
-  .section-header h2{ font-size:clamp(1.7rem,3.2vw,2.4rem); }
-  .section-header p{ font-size:1.05rem; }
-
-  /* Buttons */
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    font-family:'Montserrat',sans-serif;
-    font-weight:700;
-    font-size:1.25rem;
-    letter-spacing:.02em;
-    padding:15px 30px;
-    border-radius:999px;
-    cursor:pointer;
-    border:2px solid transparent;
-    transition:transform var(--speed) ease, box-shadow var(--speed) ease, background var(--speed) ease, color var(--speed) ease;
-    white-space:nowrap;
-  }
-  .btn-primary{ background:var(--royal-blue); color:var(--blue-deep); box-shadow:0 8px 24px rgba(0,188,212,.35); margin-bottom:16px; padding:8px 90px; }
-  .btn-secondary{ background:var(--whatsapp-green); color:var(--white); box-shadow:0 8px 24px rgba(2, 66, 26, 0.35); }
-  .btn-tertiary{ background:var(--call-orange); color:var(--white); box-shadow:0 8px 24px rgba(105, 46, 1, 0.35); }
-  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(245, 246, 247, 0.45); }
-  .btn-secondary:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(2, 66, 26, 0.45); }
-  .btn-tertiary:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(255, 111, 0, 0.45); }
-  .btn-outline{ background:transparent; border-color:rgba(255,255,255,.7); color:var(--white); }
-  .btn-outline:hover{ background:rgba(255,255,255,.12); transform:translateY(-2px); }
-  .btn-dark-outline{ background:transparent; border-color:var(--blue); color:var(--blue); }
-  .btn-dark-outline:hover{ background:var(--blue); color:var(--white); }
-
-  /* NAV */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:1000;
-    background:rgba(255,255,255,0);
-    transition:background var(--speed) ease, box-shadow var(--speed) ease, padding var(--speed) ease;
-    padding:22px 24px;
-  }
-  header.scrolled{
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(8px);
-    box-shadow:0 6px 24px rgba(0,51,102,.08);
-    padding:14px 24px;
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .logo{
-    font-family:'Montserrat',sans-serif; font-weight:350; font-size:1.25rem;
-    color:var(--white); letter-spacing:.01em;
-    display:flex; align-items:center; gap:8px;
-    transition:color var(--speed) ease;
-  }
-  header.scrolled .logo{ color:var(--blue); }
-  .logo .dot{ color:var(--cyan); }
-  .nav-links{ display:flex; gap:34px; align-items:center; }
-  .nav-links a{
-    font-family:'Montserrat',sans-serif; font-weight:600; font-size:.92rem;
-    color:var(--white); opacity:.92; transition:color var(--speed) ease, opacity var(--speed) ease;
-    position:relative;
-  }
-  header.scrolled .nav-links a{ color:var(--blue); }
-  .nav-links a::after{
-    content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--cyan);
-    transition:width var(--speed) ease;
-  }
-  .nav-links a:hover::after{ width:100%; }
-  .nav-cta{ display:flex; align-items:center; gap:16px; }
-  .nav-cta .btn-primary{ padding:11px 22px; font-size:.85rem; }
-  .hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px; }
-  .hamburger span{ width:24px; height:2px; background:var(--white); transition:background var(--speed) ease; }
-  header.scrolled .hamburger span{ background:var(--blue); }
-
-  /* HERO */
-  .hero{
-    position:relative;
-    min-height:100vh;
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    padding:140px 24px 100px;
-    overflow:hidden;
-    background:
-      linear-gradient(120deg, rgba(0,31,63,.88) 10%, rgba(0,51,102,.68) 55%, rgba(0,51,102,.4) 100%),
-      url('https://images.unsplash.com/photo-1494412651409-8963ce7935a7?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
-  }
-  .hero-inner{
-    max-width:var(--maxw); margin:0 auto; width:100%;
-    display:flex; align-items:center; justify-content:center; gap:64px; text-align:center;
-  }
-  .hero-inner h1{
-    color:var(--white); font-size:clamp(2.3rem,4.6vw,3.6rem); margin-bottom:.45em; display: block;
-  }
-  .hero-inner h2{
-    color:var(--white); font-size:clamp(1.8rem,4.6vw,3.6rem); margin-bottom:.45em; display: block;
-  }
-  .hero-inner p{ color:rgba(255,255,255,.86); font-size:1.15rem; max-width:520px; }
-  .hero-ctas{ display:flex; justify-content: center; gap:16px; flex-wrap:wrap; margin-top:34px; }
-
-  /* Signature element: animated route */
-  .route-panel{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:var(--radius);
-    padding:32px 26px;
-    backdrop-filter:blur(6px);
-  }
-  .route-panel h3{ color:var(--white); font-size:1rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:26px; }
-  .route-track{ position:relative; padding-left:18px; }
-  .route-line{
-    position:absolute; left:18px; top:6px; bottom:6px; width:2px;
-    background:repeating-linear-gradient(to bottom, var(--cyan) 0 6px, transparent 6px 12px);
-  }
-  .route-stop{ position:relative; padding:0 0 30px 34px; }
-  .route-stop:last-child{ padding-bottom:0; }
-  .route-stop::before{
-    content:""; position:absolute; left:9px; top:2px; width:14px; height:14px; border-radius:50%;
-    background:var(--blue-deep); border:2px solid var(--cyan);
-  }
-  .route-stop.active::before{ background:var(--cyan); box-shadow:0 0 0 5px rgba(0,188,212,.25); }
-  .route-stop strong{ display:block; color:var(--white); font-family:'Montserrat',sans-serif; font-size:.95rem; }
-  .route-stop span{ color:rgba(255,255,255,.65); font-size:.82rem; }
-
-  .trust-strip{
-    background:var(--white);
-    border-top:1px solid var(--border);
-    padding:26px 24px;
-  }
-  .trust-strip .container{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:28px 44px;
-  }
-  .trust-strip .item{
-    display:flex; align-items:center; gap:10px;
-    font-family:'Montserrat',sans-serif; font-weight:600; font-size:.88rem; color:var(--blue);
-  }
-  .trust-strip .item svg{ flex:none; }
-
-  /* BENEFITS */
-  .benefits{ background:var(--gray-light); }
-  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
-  .card{
-    background:var(--white);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:34px 28px;
-    transition:transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
-  }
-  .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:transparent; }
-  .icon-badge{
-    width:48px; height:48px; border-radius:12px;
-    background:linear-gradient(135deg, var(--blue), var(--blue-deep));
-    display:flex; align-items:center; justify-content:center;
-    margin-bottom:18px;
-  }
-  .icon-badge svg{ stroke:var(--cyan); }
-  .card h3{ font-size:1.08rem; margin-bottom:8px; }
-  .card p{ font-size:.94rem; margin-bottom:0; }
-
-  /* SERVICES */
-  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
-  .service-card{
-    position:relative; border-radius:var(--radius); overflow:hidden; height:320px;
-    display:flex; align-items:flex-end; padding:26px;
-    background-size:cover; background-position:center;
-    isolation:isolate;
-  }
-  .service-card::after{
-    content:""; position:absolute; inset:0; z-index:0;
-    background:linear-gradient(to top, rgba(0,31,63,.92) 10%, rgba(0,31,63,.35) 55%, rgba(0,31,63,.1) 100%);
-    transition:background var(--speed) ease;
-  }
-  .service-card:hover::after{ background:linear-gradient(to top, rgba(0,188,212,.85) 0%, rgba(0,31,63,.55) 60%, rgba(0,31,63,.15) 100%); }
-  .service-card .content{ position:relative; z-index:1; }
-  .service-card h3{ color:var(--white); font-size:1.15rem; margin-bottom:6px; }
-  .service-card p{ color:rgba(255,255,255,.85); font-size:.88rem; margin-bottom:0; }
-
-  /* WHY CHOOSE US */
-  .why{ background:var(--white); }
-  .why-inner{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
-  .why-media{ position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
-  .why-media img{ width:100%; height:460px; object-fit:cover; }
-  .why-list{ display:flex; flex-direction:column; gap:22px; }
-  .why-item{ display:flex; gap:16px; align-items:flex-start; }
-  .check{
-    flex:none; width:26px; height:26px; border-radius:50%;
-    background:var(--cyan); display:flex; align-items:center; justify-content:center; margin-top:2px;
-  }
-  .why-item h4{ font-size:1rem; margin-bottom:4px; }
-  .why-item p{ font-size:.92rem; margin-bottom:0; }
-
-  /* TRUST / STATS */
-  .trust-section{
-    background:linear-gradient(135deg, var(--blue-deep), var(--blue));
-    color:var(--white);
-  }
-  .trust-section .section-header h2, .trust-section .section-header p{ color:var(--white); }
-  .trust-section .section-header p{ color:rgba(255,255,255,.75); }
-  .stats-row{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
-    margin-bottom:64px;
-  }
-  .stat{ text-align:center; }
-  .stat .num{
-    font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(2rem,4vw,2.7rem); color:var(--cyan);
-  }
-  .stat .label{ font-size:.85rem; color:rgba(255,255,255,.75); margin-top:6px; }
-  .testimonials{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:56px; }
-  .t-card{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:var(--radius);
-    padding:30px 26px;
-  }
-  .t-card .stars{ color:var(--cyan); font-size:.85rem; margin-bottom:14px; letter-spacing:2px; }
-  .t-card p{ color:rgba(255,255,255,.88); font-size:.94rem; }
-  .t-card .author{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:.85rem; color:var(--white); }
-  .badges-row{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:34px;
-    padding-top:36px; border-top:1px solid rgba(255,255,255,.15);
-  }
-  .badge{ display:flex; align-items:center; gap:10px; font-size:.85rem; color:rgba(255,255,255,.85); font-family:'Montserrat',sans-serif; font-weight:600; }
-
-  /* CTA */
-  .cta{
-    position:relative;
-    background:
-      linear-gradient(120deg, rgba(0,31,63,.93), rgba(0,51,102,.85)),
-      url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2000&auto=format&fit=crop') center/cover;
-    text-align:center;
-    padding:100px 24px;
-  }
-  .cta h2{ color:var(--white); font-size:clamp(1.9rem,3.6vw,2.6rem); }
-  .cta p{ color:rgba(255,255,255,.85); max-width:520px; margin:0 auto 32px; font: size 30px; }
-  .cta .quick-call { background:var(--call-orange); color:var(--white); padding:12px 80px; border-radius:var(--radius); display:inline-block; margin-bottom:16px; }
-  .cta .quick-call p{font: size 3.5em; margin: 0;}
-  .cta-micro{ margin-top:18px; font-size:.82rem; color:rgba(255,255,255,.65); }
-
-  /* CONTACT */
-  .contact{ background:var(--gray-light); }
-  .contact-inner{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
-  .form-card{
-    background:var(--white); border-radius:var(--radius); padding:38px;
-    box-shadow:var(--shadow);
-  }
-  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
-  .field{ display:flex; flex-direction:column; gap:6px; }
-  .field.full{ grid-column:1 / -1; }
-  label{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:.8rem; color:var(--blue); }
-  input, select, textarea{
-    font-family:'Open Sans',sans-serif; font-size:.94rem;
-    padding:12px 14px; border-radius:9px; border:1.5px solid var(--border);
-    background:var(--white); color:#1c1c1c;
-    transition:border-color var(--speed) ease, box-shadow var(--speed) ease;
-    width:100%;
-  }
-  input:focus, select:focus, textarea:focus{
-    outline:none; border-color:var(--cyan); box-shadow:0 0 0 4px rgba(0,188,212,.15);
-  }
-  textarea{ resize:vertical; min-height:100px; }
-  .form-card .btn{ width:100%; margin-top:6px; }
-  .form-note{ font-size:.78rem; color:var(--gray); margin-top:14px; text-align:center; }
-
-  .contact-info{ display:flex; flex-direction:column; justify-content:center; gap:26px; }
-  .info-item{ display:flex; gap:16px; align-items:flex-start; }
-  .info-item .ic{
-    flex:none; width:44px; height:44px; border-radius:11px;
-    background:var(--blue); display:flex; align-items:center; justify-content:center;
-  }
-  .info-item .ic svg{ stroke:var(--cyan); }
-  .info-item h4{ font-size:.98rem; margin-bottom:3px; }
-  .info-item p{ font-size:.9rem; margin-bottom:0; }
-  .closing-line{
-    margin-top:12px; padding-top:22px; border-top:1px solid var(--border);
-    font-family:'Montserrat',sans-serif; font-weight:700; color:var(--blue); font-size:1rem;
-  }
-
-  /* FOOTER */
-  footer{ background:var(--blue-deep); color:rgba(255,255,255,.65); padding:44px 24px 26px; }
-  .footer-inner{
-    max-width:var(--maxw); margin:0 auto;
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
-    font-size:.85rem;
-  }
-  .footer-inner .logo{ color:var(--white); }
-  .footer-links{ display:flex; gap:24px; flex-wrap:wrap; }
-  .footer-links a:hover{ color:var(--cyan); }
-
-  /* Scroll reveal */
-  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
-
-  /* Responsive */
-  @media (max-width: 980px){
-    .hero-inner{ grid-template-columns:1fr; }
-    .route-panel{ display:none; }
-    .grid-3, .services-grid{ grid-template-columns:repeat(2,1fr); }
-    .why-inner, .contact-inner{ grid-template-columns:1fr; }
-    .why-media img{ height:320px; }
-    .stats-row{ grid-template-columns:repeat(2,1fr); }
-    .testimonials{ grid-template-columns:1fr; }
-  }
-  @media (max-width: 680px){
-    section{ padding:64px 20px; }
-    .nav-links, .nav-cta .btn-primary{ display:none; }
-    .hamburger{ display:flex; }
-    .grid-3, .services-grid{ grid-template-columns:1fr; }
-    .form-row{ grid-template-columns:1fr; }
-    .hero{ padding-top:120px; }
-    .stats-row{ grid-template-columns:repeat(2,1fr); gap:30px 16px; }
-  }
-  .mobile-menu{
-    position:fixed; inset:0 0 auto 0; background:var(--white);
-    padding:100px 28px 40px; transform:translateY(-100%); transition:transform .4s ease;
-    z-index:999; display:flex; flex-direction:column; gap:22px; height:100vh; overflow-y:auto;
-  }
-  .mobile-menu.open{ transform:translateY(0); }
-  .mobile-menu a{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; color:var(--blue); }
-  .mobile-menu .btn{ margin-top:10px; }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation:none !important; transition:none !important; }
-    html{ scroll-behavior:auto; }
-  }
-
-  :focus-visible{ outline:3px solid var(--cyan); outline-offset:2px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Freight & Logistics Services | Air, Sea & Ground Shipping</title>
+    <meta name="description" content="Reliable global logistics solutions — air freight, ocean freight, ground delivery, customs clearance & warehousing. Get a free quote today.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
-<header id="siteHeader">
-  <div class="nav-inner">
-    <a href="#top" class="logo">Air & Sea Logistics<span class="dot">.</span></a>
-    <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#why">Why Us</a>
-      <a href="#trust">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services">Services</a>
-  <a href="#why">Why Us</a>
-  <a href="#trust">Testimonials</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-</div>
-
-<main id="top">
-<h2> </h2>
-        
-  <!-- HERO -->
-  <section class="hero" aria-label="Introduction">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <span class="eyebrow">Seamless Global Relocation. Trusted Local Expertise.</span>
-        <h1>Planning to Move?</h1>
-          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>   
-          <div class="service-card reveal" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200&auto=format&fit=crop')">
-            <div class="content"><h3>Air & Sea Logistics</h3><p>is a reliable, professional, and stress-free moving services in the UAE.</p></div>
-          </div>     
-       <div class="hero-ctas">
-         <p>Our experienced team provides safe packing, secure transportation, careful loading & unloading, and complete relocation solutions—making your move simple from start to finish. 🚚📦</p>
-         <h2>Let the Experts Handle It!</h2>
-         <a href="#contact" class="btn btn-secondary">Chat with Us on WhatsApp</a>
-         <div class="service-card reveal" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200&auto=format&fit=crop')">
-            <div class="content"><h3>Air & Sea Logistics</h3><p>is a reliable, professional, and stress-free moving services in the UAE.</p></div>
-         </div> 
-      </div>          
-    </div>
-  </section>
- <!-- CTA -->
-  <section class="cta">
-    <div class="container reveal">
-      <h2>Ready to Move Smarter?</h2>     
-       <a href="#contact" class="btn btn-tertiary">Call Now: +971 4 889 5950</a>
-      <div class="cta-micro">Get fast, reliable support from our experienced team.</div>
-    </div>
-  </section>
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Projects</span>
-        <h2>Our Expertise in Action</h2>
-        <p>Showcases the quality, skill, and dedication behind every project we deliver. It highlights our proven ability to provide reliable solutions, ensuring excellence, efficiency, and customer satisfaction in every service we offer.</p>
-      </div>
-      <div class="services-grid">
-
-        <div class="service-card reveal" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop')">
-          <div class="content"><h3>Apple Middle East</h3><p>Priority air cargo for time-sensitive and high-value shipments across major global routes.</p></div>
-        </div>
-
-        <div class="service-card reveal" style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=1200&auto=format&fit=crop')">
-          <div class="content"><h3>VIP Clients - Al Baik</h3><p>Cost-effective FCL and LCL shipping across all major shipping lanes worldwide.</p></div>
-        </div>
-
-        <div class="service-card reveal" style="background-image:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop')">
-          <div class="content"><h3>Warehousing & Storage</h3><p>Reliable trucking networks that get your goods from port to door, on schedule.</p></div>
-        </div>
-
-        <div class="service-card reveal" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200&auto=format&fit=crop')">
-          <div class="content"><h3>Wood Crating</h3><p>Secure, strategically located storage with inventory management and fast fulfillment.</p></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
- <!-- CTA -->
-  <section class="cta">
-    <div class="container reveal">
-      <h2>Ready to Move Smarter & for Quick Discussion?</h2>  
-              <p>Call Now:</p> 
-      <a href="#contact" class="btn btn-tertiary" style="margin-bottom: 20px;">Call Now: +971 55 659 8756 </a>
-       <a href="#contact" class="btn btn-secondary">Chat with Us on WhatsApp</a>
-      <div class="cta-micro">Get fast, reliable support from our experienced team.</div>
-    </div>
-  </section>
-  <!-- TRUST / STATS -->
-  <section class="trust-section" id="trust">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Real Stories from Happy Customers</span>
-        <h2>Trusted by Families and Businesses Across the UAE</h2>
-       
-      <div class="testimonials">
-        <div class="t-card reveal">
-          <div class="stars">★★★★★</div>
-          <p>"Switching our freight partner was the best operational decision we made this year. Deliveries are faster, and communication is outstanding."</p>
-          <div class="author">Operations Director, Retail Distribution Company</div>
-        </div>
-        <div class="t-card reveal">
-          <div class="stars">★★★★★</div>
-          <p>"Their customs team saved us weeks of delays. We finally have a logistics partner we can rely on."</p>
-          <div class="author">Supply Chain Manager, Manufacturing Firm</div>
-        </div>
-        <div class="t-card reveal">
-          <div class="stars">★★★★★</div>
-          <p>"Transparent pricing, real-time tracking, and a team that actually picks up the phone. Exactly what we needed."</p>
-          <div class="author">Founder, E-Commerce Business</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Get In Touch</span>
-        <h2>Let's Plan Your Move</h2>
-        <p>Reach out — our team responds fast.</p>
-      </div>
-
-      <div class="contact-inner">
-        <form class="form-card reveal" id="quoteForm">
-          <div class="form-row">
-            <div class="field"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" placeholder="Jane Doe" required></div>
-            <div class="field"><label for="company">Company Name</label><input id="company" name="company" type="text" placeholder="Your Company Ltd."></div>
-          </div>
-          <div class="form-row">
-            <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" placeholder="you@company.com" required></div>
-            <div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="+971 00 000 0000"></div>
-          </div>
-          <div class="form-row">
-            <div class="field full">
-              <label for="shipmentType">Shipment Type</label>
-              <select id="shipmentType" name="shipmentType">
-                <option>Air Freight</option>
-                <option>Ocean Freight</option>
-                <option>Ground Delivery</option>
-                <option>Warehousing</option>
-                <option>Other</option>
-              </select>
+    <header id="siteHeader">
+        <div class="nav-inner">
+            <a href="#top" class="logo">
+                <img src="images/ASL Logo-image.png" alt="Air & Sea Logistics Logo">
+                <span>AIR & SEA Logistics</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#trust">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="field full">
-              <label for="message">Message / Shipment Details</label>
-              <textarea id="message" name="message" placeholder="Tell us about your shipment or move — date, origin, destination, size, and timeline."></textarea>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#trust">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+    </div>
+
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero" aria-label="Introduction">
+            <div class="hero-inner">
+                <div class="hero-content reveal">
+                    <span class="eyebrow">Seamless Global Relocation. Trusted Local Expertise.</span>
+                    <h1>Planning to Move?</h1>
+                    <div class="hero-card-container">
+                        <div class="service-card video-card">
+                            <video class="bg-video" autoplay muted loop playsinline>
+                                <source src="video/video1.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <div class="video-overlay"></div>
+                            <div class="content">
+                                <p>Our experienced team provides safe packing, secure transportation, careful loading & unloading, and complete relocation solutions—making your move simple from start to finish. 🚚📦</p>
+                                <h2>Let the Experts Handle It!</h2>
+                                <div class="hero-ctas">
+                                    <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                                    <a href="https://wa.me/971556598756?text=Hi%20Air%20%26%20Sea%20Logistics%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20move."
+                                       class="btn btn-secondary whatsapp-btn"
+                                       target="_blank" rel="noopener noreferrer"
+                                       data-whatsapp-phone="971556598756"
+                                       data-whatsapp-message="Hi Air & Sea Logistics, I'd like to get a quote for my move.">
+                                        Chat with Us on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Request a Quote</button>
-          <p class="form-note" id="formNote">We typically respond within 1 business hour.</p>
-        </form>       
-      </div>
-    </div>
-  </section>
+        </section>
 
-</main>
+        <!-- QUICK CTA -->
+        <section class="cta-quick">
+            <div class="container reveal">
+                <h2>Ready to Move Smarter?</h2>
+                <div class="cta-buttons">
+                    <a href="tel:+97148895950" class="btn btn-tertiary">Call Now: +971 4 889 5950</a>
+                </div>
+                <div class="cta-micro">Get fast, reliable support from our experienced team.</div>
+            </div>
+        </section>
 
-<footer>
-  <div class="footer-inner">
-    <a href="#top" class="logo">Air & Sea Logistics LLC<span class="dot" style="color:#00BCD4">.</span></a>
-    <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#why">Why Us</a>
-      <a href="#trust">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div>© 2026 SwiftCargo Logistics. All rights reserved.</div>
-  </div>
-</footer>
+        <!-- SERVICES -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Projects</span>
+                    <h2>Our Expertise in Action</h2>
+                    <p>Showcases the quality, skill, and dedication behind every project we deliver. It highlights our proven ability to provide reliable solutions, ensuring excellence, efficiency, and customer satisfaction in every service we offer.</p>
+                </div>
+                <div class="services-grid">
+                    <!-- Service 1: Video -->
+                    <div class="service-card reveal video-card">
+                        <video class="bg-video" autoplay muted loop playsinline>
+                            <source src="video/videoA.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <div class="video-overlay"></div>
+                        <div class="content">
+                            <h3>Apple Middle East</h3>
+                            <p>Priority air cargo for time-sensitive and high-value shipments across major global routes.</p>
+                        </div>
+                    </div>
 
-<script>
-  // Header scroll state
-  const header = document.getElementById('siteHeader');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
-  window.addEventListener('scroll', onScroll);
-  onScroll();
+                    <!-- Service 2: Slider -->
+                    <div class="service-card reveal has-slider"
+                         data-slides="images/EXO1.jpg,images/EXO2.jpg,images/EXO3.jpg,images/EXO4.jpg,images/EXO5.jpg"
+                         data-interval="4000"
+                         data-speed="1200">
+                        <div class="content">
+                            <h3>PACKING | EXPORT: House Hold Goods</h3>
+                            <p>Cost-effective FCL and LCL shipping across all major shipping lanes worldwide.</p>
+                        </div>
+                    </div>
 
-  // Mobile menu toggle
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburgerBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburgerBtn.setAttribute('aria-expanded', isOpen);
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-  }));
+                    <!-- Service 3: Slider -->
+                    <div class="service-card reveal has-slider"
+                         data-slides="images/WH1.jpg,images/WH2.jpg,images/WH3.jpg,images/WH4.jpg,images/WH5.jpg,images/WH6.jpg,images/WH7.jpg"
+                         data-interval="4000"
+                         data-speed="1200">
+                        <div class="content">
+                            <h3>STORAGE | WAREHOUSING</h3>
+                            <p>Reliable trucking networks that get your goods from port to door, on schedule.</p>
+                        </div>
+                    </div>
 
-  // Scroll reveal
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealEls = document.querySelectorAll('.reveal');
-  if (reduceMotion) {
-    revealEls.forEach(el => el.classList.add('in'));
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-  }
+                    <!-- Service 4: Slider -->
+                    <div class="service-card reveal has-slider"
+                         data-slides="images/WC1.jpg,images/WC2.jpg,images/WC3.jpg,images/WC4.jpg,images/WC5.jpg,images/WC6.jpg,images/WC7.jpg,images/WC8.jpg,images/WC9.jpg,images/WC10.jpg,images/WC11.jpg,images/WC12.jpg"
+                         data-interval="4000"
+                         data-speed="1200">
+                        <div class="content">
+                            <h3>CRATING | EXPORT: CAR & MOTORBIKE</h3>
+                            <p>Secure, strategically located storage with inventory management and fast fulfillment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  // Animated stat counters
-  const statEls = document.querySelectorAll('.stat .num');
-  const animateStat = (el) => {
-    const target = parseFloat(el.dataset.target);
-    const suffix = el.dataset.suffix || '';
-    const decimals = parseInt(el.dataset.decimal || '0', 10);
-    const duration = 1400;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = target * eased;
-      el.textContent = (decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString()) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-  if (reduceMotion) {
-    statEls.forEach(el => {
-      const decimals = parseInt(el.dataset.decimal || '0', 10);
-      el.textContent = (decimals ? parseFloat(el.dataset.target).toFixed(decimals) : parseInt(el.dataset.target).toLocaleString()) + (el.dataset.suffix || '');
-    });
-  } else {
-    const statIo = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateStat(entry.target);
-          statIo.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    statEls.forEach(el => statIo.observe(el));
-  }
+        <!-- CTA MID -->
+        <section class="cta-mid">
+            <div class="container reveal">
+                <h2>Ready to Move Smarter & for Quick Discussion?</h2>
+                <div class="cta-buttons">
+                    <a href="tel:+971556598756" class="btn btn-tertiary">Call Now: +971 55 659 8756</a>
+                    <a href="https://wa.me/971556598756?text=Hi%20Air%20%26%20Sea%20Logistics%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20move."
+                       class="btn btn-secondary whatsapp-btn"
+                       target="_blank" rel="noopener noreferrer"
+                       data-whatsapp-phone="971556598756"
+                       data-whatsapp-message="Hi Air & Sea Logistics, I'd like to get a quote for my move.">
+                        Chat with Us on WhatsApp
+                    </a>
+                </div>
+                <div class="cta-micro">Get fast, reliable support from our experienced team.</div>
+            </div>
+        </section>
 
-  // Contact form (front-end only — wire up to backend/email service as needed)
-  const form = document.getElementById('quoteForm');
-  const formNote = document.getElementById('formNote');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    formNote.textContent = "Thanks — your request has been received. Our team will reach out within 1 business hour.";
-    formNote.style.color = '#00838f';
-    form.reset();
-  });
-</script>
+        <!-- TRUST / TESTIMONIALS -->
+        <section class="trust-section" id="trust">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Real Stories from Happy Customers</span>
+                    <h2>Trusted by Families and Businesses Across the UAE</h2>
+                </div>
+                <div class="testimonials">
+                    <div class="t-card reveal">
+                        <div class="stars">★★★★★</div>
+                        <p>"Switching our freight partner was the best operational decision we made this year. Deliveries are faster, and communication is outstanding."</p>
+                        <div class="author">Operations Director, Retail Distribution Company</div>
+                    </div>
+                    <div class="t-card reveal">
+                        <div class="stars">★★★★★</div>
+                        <p>"Their customs team saved us weeks of delays. We finally have a logistics partner we can rely on."</p>
+                        <div class="author">Logistics Manager, E-commerce Group</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- CONTACT -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="eyebrow">Get In Touch</span>
+                    <h2>Let's Plan Your Move</h2>
+                    <p>Reach out — our team responds fast.</p>
+                </div>
+
+                <div class="contact-inner reveal">
+                    <form class="form-card" id="quoteForm">
+                        <div class="form-row">
+                            <div class="field">
+                                <label for="fullName">Full Name</label>
+                                <input id="fullName" name="fullName" type="text" placeholder="Jane Doe" required>
+                            </div>
+                            <div class="field">
+                                <label for="company">Company Name</label>
+                                <input id="company" name="company" type="text" placeholder="Your Company Ltd.">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="field">
+                                <label for="email">Email Address</label>
+                                <input id="email" name="email" type="email" placeholder="you@company.com" required>
+                            </div>
+                            <div class="field">
+                                <label for="phone">Phone Number</label>
+                                <input id="phone" name="phone" type="tel" placeholder="+971 00 000 0000">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="field full">
+                                <label for="shipmentType">Shipment Type</label>
+                                <select id="shipmentType" name="shipmentType">
+                                    <option value="Air Freight">Air Freight</option>
+                                    <option value="Ocean Freight">Ocean Freight</option>
+                                    <option value="Ground Delivery">Ground Delivery</option>
+                                    <option value="Warehousing">Warehousing</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="field full">
+                                <label for="message">Message / Shipment Details</label>
+                                <textarea id="message" name="message" placeholder="Tell us about your shipment or move — date, origin, destination, size, and timeline."></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Request a Quote</button>
+                        <p class="form-note" id="formNote">We typically respond within 1 business hour.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <a href="#top" class="logo">Air & Sea Logistics LLC<span class="dot">.</span></a>
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#trust">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="copyright">© 2026 Air & Sea Logistics LLC. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
 </body>
 </html>
