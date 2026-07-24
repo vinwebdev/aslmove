@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Air & Sea Logistics | Air, Sea & Ground Shipping and Relocation Services</title>
+<meta name="description" content="Reliable global logistics solutions — air freight, ocean freight, ground delivery, customs clearance, warehousing and home relocation in the UAE. Get a free quote today.">
+
+<!-- Google Fonts: Montserrat for headings, Open Sans for body copy -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* =====================================================
+     DESIGN TOKENS
+     Central place for brand colors, spacing and timing.
+     Edit values here to re-theme the whole page.
+  ===================================================== */
+  :root{
+    --blue:#003366;          /* primary brand blue (headings, nav, backgrounds) */
+    --blue-deep:#ebebeb;     /* NOTE: despite the name this is a light neutral gray,
+                                 used for secondary text on dark buttons. Rename if
+                                 you introduce a true "deep blue" later. */
+    --royal-blue:#1337d6;    /* accent blue used on the primary CTA button */
+    --cyan:#00BCD4;          /* accent color for links, icons, highlights */
+    --gray:#666666;          /* body copy color */
+    --gray-light:#f4f6f8;    /* light section backgrounds */
+    --white:#FFFFFF;
+    --border:#e4e8ec;
+    --shadow: 0 10px 30px rgba(0,51,102,0.08);
+    --radius: 14px;
+    --maxw: 1200px;
+    --speed: .5s;            /* default transition speed used across hovers/reveals */
+    --yellow: #FFD700;      /* optional accent color for future use */
+
+    /* Secondary button (WhatsApp) */
+    --whatsapp-green: #25D366;
+    --whatsapp-green-dark: #128C7E;
+    --whatsapp-green-hover: #1EBE5D;
+
+    /* Tertiary button (Call) */
+    --call-orange: #FF6F00;
+    --call-orange-hover: #E65100;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Open Sans', sans-serif;
+    color:#1c1c1c;
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    line-height:1.2;
+    margin:0 0 .6em;
+    color:var(--blue);
+  }
+  p{ margin:0 0 1em; color:var(--gray); }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; margin:0; padding:0; }
+  img{ max-width:100%; display:block; }
+  section{ padding:88px 24px; }
+  .container{ max-width:var(--maxw); margin:0 auto; }
+  .eyebrow{
+    display:inline-block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    color:var(--cyan);
+    margin-bottom:14px;
+  }
+  .section-header{ max-width:680px; margin:0 auto 56px; text-align:center; }
+  .section-header h2{ font-size:clamp(1.7rem,3.2vw,2.4rem); }
+  .section-header p{ font-size:1.05rem; }
+
+  /* =====================================================
+     BUTTONS
+     Three shared button styles: primary (brand CTA),
+     secondary (WhatsApp), tertiary (phone call).
+  ===================================================== */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:1.25rem;
+    letter-spacing:.02em;
+    padding:15px 30px;
+    border-radius:999px;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:transform var(--speed) ease, box-shadow var(--speed) ease, background var(--speed) ease, color var(--speed) ease;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--royal-blue); color:var(--white); box-shadow:0 8px 24px rgba(0,188,212,.35); margin-bottom:16px; padding:14px 48px; }
+  .btn-secondary{ background:var(--whatsapp-green); color:var(--white); box-shadow:0 8px 24px rgba(2,66,26,.35); }
+  .btn-tertiary{ background:var(--call-orange); color:var(--white); box-shadow:0 8px 24px rgba(105,46,1,.35); }
+  .btn-primary:hover{ transform:translateY(-2px); background:var(--royal-blue); box-shadow:0 12px 30px rgba(19,55,214,.45); }
+  .btn-secondary:hover{ transform:translateY(-2px); background:var(--whatsapp-green-hover); box-shadow:0 12px 30px rgba(2,66,26,.45); }
+  .btn-tertiary:hover{ transform:translateY(-2px); background:var(--call-orange-hover); box-shadow:0 12px 30px rgba(255,111,0,.45); }
+  .btn-outline{ background:transparent; border-color:rgba(255,255,255,.7); color:var(--white); }
+  .btn-outline:hover{ background:rgba(255,255,255,.12); transform:translateY(-2px); }
+  .btn-dark-outline{ background:transparent; border-color:var(--blue); color:var(--blue); }
+  .btn-dark-outline:hover{ background:var(--blue); color:var(--white); }
+
+  /* =====================================================
+     NAVIGATION
+     Transparent over the hero, solidifies on scroll.
+  ===================================================== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(255,255,255,0);
+    transition:background var(--speed) ease, box-shadow var(--speed) ease, padding var(--speed) ease;
+    padding:22px 24px;
+  }
+  header.scrolled{
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(8px);
+    box-shadow:0 6px 24px rgba(0,51,102,.08);
+    padding:14px 24px;
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:'Montserrat',sans-serif; font-weight:600; font-size:1.15rem;
+    color:var(--white); letter-spacing:.01em;
+    display:flex; align-items:center; gap:10px;
+    transition:color var(--speed) ease;
+  }
+  .logo img{ width:44px; height:44px; object-fit:contain; }
+  header.scrolled .logo{ color:var(--blue); }
+  .logo .dot{ color:var(--cyan); }
+  .nav-links{ display:flex; gap:34px; align-items:center; }
+  .nav-links a{
+    font-family:'Montserrat',sans-serif; font-weight:600; font-size:.92rem;
+    color:var(--white); opacity:.92; transition:color var(--speed) ease, opacity var(--speed) ease;
+    position:relative;
+  }
+  header.scrolled .nav-links a{ color:var(--blue); }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--cyan);
+    transition:width var(--speed) ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{ display:flex; align-items:center; gap:16px; }
+  .nav-cta .btn-primary{ padding:11px 22px; font-size:.85rem; margin-bottom:0; }
+  .hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px; }
+  .hamburger span{ width:24px; height:2px; background:var(--white); transition:background var(--speed) ease; }
+  header.scrolled .hamburger span{ background:var(--blue); }
+
+  /* =====================================================
+     HERO SECTION
+     Full-height intro banner with a fallback background
+     image plus an autoplaying video card. The fallback
+     image only shows for the split second before the
+     video paints (or if video fails to load).
+
+     BACKGROUND IMAGE AREA — replace the url() below.
+     Suggested: professional logistics / moving truck /
+     business skyline, 1920x1080 minimum, optimized WebP.
+     Sources: Unsplash, Pexels, Freepik Premium.
+  ===================================================== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:140px 24px 100px;
+    overflow:hidden;
+    background:
+      linear-gradient(120deg, rgba(0,31,63,.88) 10%, rgba(0,51,102,.68) 55%, rgba(0,51,102,.4) 100%),
+      url('images/Home-Background.png') center/cover no-repeat;
+  }
+  .hero-inner{
+    max-width:var(--maxw); margin:0 auto; width:100%;
+    display:flex; align-items:center; justify-content:center; gap:64px; text-align:center;
+  }
+  .hero-content{ width:100%; max-width:760px; margin:0 auto; }
+  .hero-content h1{
+    color:var(--white); font-size:clamp(2.3rem,4.6vw,3.6rem); margin-bottom:.3em;
+  }
+  .hero-content .eyebrow{ display:block; }
+  .hero-ctas{
+    position:relative; z-index:2; /* sits above the video overlay it's nested inside */
+    width:100%; max-width:640px; margin:0 auto;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; margin-top:28px; text-align:center;
+  }
+  .hero-ctas p{ color:rgba(255,255,255,.9); font-size:1.05rem; max-width:560px; margin:0 auto; }
+  .hero-ctas h2{ color:var(--white); font-size:clamp(1.5rem,3vw,2.1rem); margin:0; }
+  .btn-secondary { margin-bottom:25px; }
+  /* =====================================================
+     BENEFITS / ICON CARDS
+     Reusable 3-up card grid. Not currently placed on the
+     page — kept here so a future "Why choose us" style
+     section can drop in `.grid-3 > .card` without extra CSS.
+  ===================================================== */
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:34px 28px;
+    transition:transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+  }
+  .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:transparent; }
+  .icon-badge{
+    width:48px; height:48px; border-radius:12px;
+    background:linear-gradient(135deg, var(--blue), var(--blue-deep));
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .icon-badge svg{ stroke:var(--cyan); }
+  .card h3{ font-size:1.08rem; margin-bottom:8px; }
+  .card p{ font-size:.94rem; margin-bottom:0; }
+
+  /* =====================================================
+     SERVICES / PROJECT CARDS
+     Each card can show EITHER:
+       a) a background video (add class "video-card" + a
+          <video class="bg-video"> child), or
+       b) an auto-cycling image slider (add class
+          "has-slider" + data-slides="url1,url2,url3").
+     Both share the same card shell below.
+  ===================================================== */
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+
+  .service-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    min-height:420px;
+    display:flex;
+    align-items:flex-end;
+    isolation:isolate; /* keeps this card's own stacking context self-contained */
+  }
+
+  /* --- Video-card variant -------------------------------------------- */
+  /*
+     BACKGROUND VIDEO SETTINGS
+     Adjust the values below if the video appears too
+     zoomed in or too cropped on large screens.
+     Common properties to change: object-fit, object-position,
+     transform: scale(), min-width / min-height.
+     Large-screen fine-tuning lives in the media queries
+     further down this file.
+  */
+  .bg-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    z-index:0;
+  }
+  .video-overlay{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.20));
+  }
+
+  /* --- Image-slider variant ------------------------------------------ */
+  .service-card.has-slider .slide-bg{
+    position:absolute; inset:0; z-index:0;
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+    opacity:0;
+    transition:opacity var(--slide-speed, 1200ms) ease-in-out;
+    will-change:opacity;
+  }
+  .service-card.has-slider .slide-bg.is-active{ opacity:1; }
+  @media (prefers-reduced-motion: reduce){
+    .service-card.has-slider .slide-bg{ transition:none; }
+  }
+
+  /* --- Shared text content overlay ------------------------------------ */
+  .service-card .content{ position:relative; z-index:2; padding:25px; }
+  .service-card .content h3{ color:var(--white); font-size:1.4rem; margin-bottom:10px; }
+  .service-card .content p{ color:rgba(255,255,255,.88); font-size:1rem; line-height:1.6; margin-bottom:0; }
+
+  /* =====================================================
+     TRUST / TESTIMONIALS
+     BACKGROUND AREA — currently a flat brand gradient.
+     To swap in a photo instead, replace the `background`
+     line with an image + overlay, e.g. happy customers,
+     modern living room, smiling family, professional movers.
+  ===================================================== */
+  .trust-section{
+    background:linear-gradient(35deg, var(--royal-blue), var(--blue));
+    color:var(--white);
+  }
+  .trust-section .section-header h2{ color:var(--white); }
+  .trust-section .section-header p{ color:rgba(255,255,255,.75); }
+  .testimonials{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .t-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);
+    padding:30px 26px;
+  }
+  .t-card .stars{ color:var(--yellow); font-size:.85rem; margin-bottom:14px; letter-spacing:2px; }
+  .t-card p{ color:rgba(255,255,255,.88); font-size:.94rem; }
+  .t-card .author{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:.85rem; color:var(--white); }
+
+  /* =====================================================
+     CTA BANDS
+     Short, repeated call-to-action strips used between
+     sections. BACKGROUND AREA — the image below can be
+     swapped for another logistics/office photo.
+  ===================================================== */
+  .cta{
+    position:relative;
+    background:
+      linear-gradient(120deg, rgba(0,31,63,.93), rgba(0,51,102,.85)),
+      url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2000&auto=format&fit=crop') center/cover;
+    text-align:center;
+    padding:80px 24px;
+  }
+  .cta h2{ color:var(--white); font-size:clamp(1.9rem,3.6vw,2.6rem); }
+  .cta p{ color:rgba(255,255,255,.85); max-width:520px; margin:0 auto 24px; font-size:1.05rem; }
+  .cta-micro{ margin-top:18px; font-size:.82rem; color:rgba(255,255,255,.65); }
+
+  /* =====================================================
+     CONTACT / QUOTE FORM
+     BACKGROUND AREA — light neutral by default. For a
+     photographic background use an office workspace,
+     customer-service desk, or clean minimal office image.
+  ===================================================== */
+  .contact{ background:var(--gray-light); }
+  .contact-inner{ display:grid; grid-template-columns:1fr; gap:56px; max-width:760px; margin:0 auto; }
+  .form-card{
+    background:var(--white); border-radius:var(--radius); padding:38px;
+    box-shadow:var(--shadow);
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field.full{ grid-column:1 / -1; }
+  label{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:.8rem; color:var(--blue); }
+  input, select, textarea{
+    font-family:'Open Sans',sans-serif; font-size:.94rem;
+    padding:12px 14px; border-radius:9px; border:1.5px solid var(--border);
+    background:var(--white); color:#1c1c1c;
+    transition:border-color var(--speed) ease, box-shadow var(--speed) ease;
+    width:100%;
+  }
+  input:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--cyan); box-shadow:0 0 0 4px rgba(0,188,212,.15);
+  }
+  textarea{ resize:vertical; min-height:100px; }
+  .form-card .btn{ width:100%; margin-top:6px; }
+  .form-note{ font-size:.78rem; color:var(--gray); margin-top:14px; text-align:center; }
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+ /* footer{ background:var(--blue-deep); color:rgba(0,0,0,.65); padding:44px 24px 26px; } */
+              /*
+                  footer {
+                    background: var(--blue);
+                    color: var(--white);
+                    padding: 60px 24px;
+                    text-align: center;
+                }
+                  .footer-inner{
+                    max-width:var(--maxw); margin:0 auto;
+                    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+                    font-size:.85rem;
+                  }
+                  .footer-inner .logo{ color:var(--blue); }
+                  .footer-links{ display:flex; gap:24px; flex-wrap:wrap; }
+                  .footer-links a{ color:rgba(0,0,0,.65); }
+                  .footer-links a:hover{ color:var(--cyan); }
+              */
+  footer {
+    background: var(--blue);
+    color: var(--white);
+    padding: 60px 24px;
+    text-align: center;
+}
+
+.footer-inner { max-width: var(--maxw); margin: 0 auto; }
+.footer-inner .logo { justify-content: center; margin-bottom: 30px; }
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.footer-links a:hover { color: var(--cyan); }
+.copyright { font-size: 0.85rem; opacity: 0.7; }
+  /* Scroll reveal (fade + rise as elements enter the viewport) */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* =====================================================
+     RESPONSIVE — SERVICE CARD + BACKGROUND VIDEO SIZING
+     Card height (and therefore how much of the video is
+     visible) shrinks progressively on smaller viewports.
+     Tweak the height values below per breakpoint if the
+     video looks too zoomed in / cropped on a given device.
+  ===================================================== */
+
+  /* Large / ultra-wide desktop monitors (2K+) */
+  @media (min-width:1601px){
+    .service-card{ height:520px; min-height:520px; }
+  }
+  /* Standard desktop */
+  @media (max-width:1600px){
+    .service-card{ height:440px; min-height:440px; }
+  }
+  /* Small laptop */
+  @media (max-width:1200px){
+    .service-card{ height:360px; min-height:360px; }
+    .service-card .content{ padding:20px; }
+    .service-card .content h3{ font-size:1.25rem; }
+    .service-card .content p{ font-size:.92rem; }
+  }
+  /* Tablet landscape */
+  @media (max-width:992px){
+    .service-card{ height:320px; min-height:320px; }
+  }
+  /* Tablet portrait */
+  @media (max-width:768px){
+    .service-card{ height:300px; min-height:300px; border-radius:15px; }
+    .service-card .content h3{ font-size:1.1rem; }
+  }
+  /* Large mobile */
+  @media (max-width:576px){
+    .service-card{ height:460px; min-height:260px; border-radius:14px; }
+    .service-card .content{ padding:16px; }
+    .service-card .content h3{ font-size:1.05rem; margin-bottom:8px; }
+    .service-card .content p{ font-size:.85rem; }
+  }
+  /* Small mobile */
+  @media (max-width:400px){
+    .service-card{ height:230px; min-height:230px; }
+    .service-card .content{ padding:14px; }
+  }
+
+  /* General responsive layout */
+  @media (max-width: 980px){
+    .grid-3, .services-grid{ grid-template-columns:repeat(2,1fr); }
+    .testimonials{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 680px){
+    section{ padding:64px 20px; }
+    .nav-links, .nav-cta .btn-primary{ display:none; }
+    .hamburger{ display:flex; }
+    .grid-3, .services-grid{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .hero{ padding-top:120px; }
+  }
+
+  .mobile-menu{
+    position:fixed; inset:0 0 auto 0; background:var(--white);
+    padding:100px 28px 40px; transform:translateY(-100%); transition:transform .4s ease;
+    z-index:999; display:flex; flex-direction:column; gap:22px; height:100vh; overflow-y:auto;
+  }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mobile-menu a{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; color:var(--blue); }
+  .mobile-menu .btn{ margin-top:10px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  :focus-visible{ outline:3px solid var(--cyan); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<!-- ==========================
+     HEADER / NAVIGATION
+     Transparent over the hero, solidifies white on scroll
+     (see #siteHeader.scrolled in JS below).
+========================== -->
+<header id="siteHeader">
+  <div class="nav-inner">
+    <!--
+      LOGO AREA
+      Replace the image src below with your hosted logo file
+      (SVG or PNG, transparent background, ~44x44px works best).
+      The previous src pointed at a local Windows path
+      (/c:/Vin/...) which only works on the original machine —
+      it must be an uploaded/hosted URL before this goes live.
+    -->
+    <a href="#top" class="logo">
+      <img src="/Vin/Project_ASLMoveFunnel/images/ASL Logo-image.png" alt="Air & Sea Logistics logo">
+      Air & Sea Logistics
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#trust">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#trust">Testimonials</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+</div>
+
+<main id="top">
+
+  <!-- ==========================
+       HERO SECTION
+       Main banner. Fallback background image is set in CSS
+       (see .hero rule); the video card below plays over it.
+  ========================== -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="eyebrow">Seamless Global Relocation. Trusted Local Expertise.</span>
+        <h1>Planning to Move?</h1>
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+
+        <!--
+          BACKGROUND VIDEO AREA
+          Replace the <source> src below with your hosted video
+          file. The previous src (/Vin/Project_ASLMoveFunnel/...)
+          was a local file path and will not load once this page
+          is hosted online — upload the video and point to its
+          public URL (e.g. /video/video1.mp4 or a CDN link).
+          Recommended: 1920x1080, under ~8MB, muted/looping.
+        -->
+        <div class="service-card reveal video-card">
+          <video class="bg-video" autoplay muted loop playsinline poster="images/hero-video-poster.jpg">
+            <source src="video/video1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="video-overlay"></div>
+
+          <div class="hero-ctas">
+            <p>Our experienced team provides safe packing, secure transportation, careful loading &amp; unloading, and complete relocation solutions—making your move simple from start to finish. 🚚📦</p>
+            <h2>Let the Experts Handle It!</h2>
+
+            <!--
+              WHATSAPP REDIRECT BUTTON
+              href is a wa.me deep link: opens the WhatsApp app on
+              mobile and WhatsApp Web/desktop app on desktop with
+              no device sniffing required. The "text" query param
+              is a URL-encoded prefilled message. data-whatsapp-*
+              attributes let the script below rebuild/validate the
+              link without editing markup elsewhere.
+              To change the number or message, edit BOTH the href
+              and the two data- attributes together.
+            -->
+            <a href="https://wa.me/971556598756?text=Hi%20Air%20%26%20Sea%20Logistics%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20move."
+               class="btn btn-secondary whatsapp-btn"
+               target="_blank" rel="noopener noreferrer"
+               data-whatsapp-phone="971556598756"
+               data-whatsapp-message="Hi Air & Sea Logistics, I'd like to get a quote for my move.">
+               Chat with Us on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       CTA BAND — PHONE
+  ========================== -->
+  <section class="cta">
+    <div class="container reveal">
+      <h2>Ready to Move Smarter?</h2>
+      <a href="tel:+97148895950" class="btn btn-tertiary">Call Now: +971 4 889 5950</a>
+      <div class="cta-micro">Get fast, reliable support from our experienced team.</div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       SERVICES / PROJECT SHOWCASE
+       Each card cycles through images via the ".has-slider"
+       script further down, except the first which plays a
+       background video instead.
+
+       BACKGROUND AREA (per card) — swap the image lists in
+       each data-slides attribute for your own project photos.
+       Suggested subjects: cargo aircraft, export packing,
+       warehouse racking, vehicle crating — 1200px wide+.
+  ========================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Projects</span>
+        <h2>Our Expertise in Action</h2>
+        <p>Showcases the quality, skill, and dedication behind every project we deliver. It highlights our proven ability to provide reliable solutions, ensuring excellence, efficiency, and customer satisfaction in every service we offer.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Card 1: background video -->
+        <div class="service-card reveal video-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="video/videoA.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="video-overlay"></div>
+          <div class="content">
+            <h3>Apple Middle East</h3>
+            <p>Priority air cargo for time-sensitive and high-value shipments across major global routes.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: image slider -->
+        <div class="service-card reveal has-slider"
+             data-slides="images/EXO2.jpg,images/EXO3.jpg,images/EXO4.jpg,images/EXO5.jpg"
+             data-interval="4000"
+             data-speed="1200">
+          <div class="slide-bg is-active" style="background-image:url('images/EXO1.jpg')"></div>
+          <div class="content">
+            <h3>Packing &amp; Export: Household Goods</h3>
+            <p>Cost-effective FCL and LCL shipping across all major shipping lanes worldwide.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: image slider -->
+        <div class="service-card reveal has-slider"
+             data-slides="images/WH2.jpg,images/WH3.jpg,images/WH4.jpg,images/WH5.jpg,images/WH6.jpg,images/WH7.jpg"
+             data-interval="4000"
+             data-speed="1200">
+          <div class="slide-bg is-active" style="background-image:url('images/WH1.jpg')"></div>
+          <div class="content">
+            <h3>Storage &amp; Warehousing</h3>
+            <p>Reliable trucking networks that get your goods from port to door, on schedule.</p>
+          </div>
+        </div>
+
+        <!-- Card 4: image slider -->
+        <div class="service-card reveal has-slider"
+             data-slides="images/WC2.jpg,images/WC3.jpg,images/WC4.jpg,images/WC5.jpg,images/WC6.jpg,images/WC7.jpg,images/WC8.jpg,images/WC9.jpg,images/WC10.jpg,images/WC11.jpg,images/WC12.jpg"
+             data-interval="4000"
+             data-speed="1200">
+          <div class="slide-bg is-active" style="background-image:url('images/WC1.jpg')"></div>
+          <div class="content">
+            <h3>Crating &amp; Export: Car &amp; Motorbike</h3>
+            <p>Secure, strategically located storage with inventory management and fast fulfillment.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       CTA BAND — PHONE + WHATSAPP
+  ========================== -->
+  <section class="cta">
+    <div class="container reveal">
+      <h2>Ready to Move Smarter &amp; for a Quick Discussion?</h2>
+      <p>Call now for a fast, no-obligation quote.</p>
+      <a href="tel:+971556598756" class="btn btn-tertiary" style="margin-bottom:20px;">Call Now: +971 55 659 8756</a>
+      <a href="https://wa.me/971556598756?text=Hi%20Air%20%26%20Sea%20Logistics%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20move."
+         class="btn btn-secondary whatsapp-btn"
+         target="_blank" rel="noopener noreferrer"
+         data-whatsapp-phone="971556598756"
+         data-whatsapp-message="Hi Air & Sea Logistics, I'd like to get a quote for my move.">
+         Chat with Us on WhatsApp
+      </a>
+      <div class="cta-micro">Get fast, reliable support from our experienced team.</div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       TRUST / TESTIMONIALS
+       BACKGROUND AREA — currently a brand-color gradient
+       (see .trust-section in CSS). Swap for a photo of
+       happy customers / a modern living room if preferred.
+  ========================== -->
+  <section class="trust-section" id="trust">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Real Stories from Happy Customers</span>
+        <h2>Trusted by Families and Businesses Across the UAE</h2>
+      </div>
+
+
+      
+      <div class="testimonials">
+        <div class="t-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"We had a very good experience with Air & Sea Logistics. The team was very helpful and worked fast. They sorted out everything quickly and made the move easy for us. We can definitely recommend them and will use them again next time."</p>
+          <div class="author">Ms. Laura T. &nbsp;&nbsp;&nbsp; - &nbsp;a month ago</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"I have shipped my household items (furniture and electronics included) using Air & Sea Logistics, three times since 2021 and they have always delivered well and in a professional manner.
+              My first two shipments were to India and my most recently shipment was to Canada.
+              I have also entrusted them with the storage of my goods. The first time I shipped with them, I used their storage facilities for 13 months, over the period 2020-21, until proper air travel to India resumed. The latest storage was in connection with my shipment to Canada and was for a period of over 6 months.
+              Besides the fact that they have always been friendly and accommodating, I found their charges to be very fair and reasonable when compared to the market. I also found them to be very customer focussed and will do their best to accommodate your requests.
+              I have to add that for all of my shipments, all the cartons/boxes were delivered, without exception. My first shipment to India was the largest and well over 200 cartons.
+              Air & Sea logistics have also done a local re-location for me in the past because, although the bulk of my first shipment was bound for India, many of my belongings (furniture & electronics included) were to be relocated to my new accomodation in Dubai.
+              I have met the owner, Mr Saurabh Bhalla, a number of times. He is a thorough gentleman and very understanding of your requirements.
+              Mr Samin Saqib (the Manager) was the go-to person for my Canada shipment and he was always very prompt with his responses to all of my queries.
+              When it comes to shipping your personal belongings overseas, you need a safe pair of hands. And Air & Sea Logistics have been just that for all of my shipments.
+              I would not hesitate to ship with them again."</p>
+          <div class="author">Malcolm Darukhanawalla  &nbsp;&nbsp;&nbsp; - &nbsp; 8 months ago</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Had a great experience with Air & Sea Logistics during our recent move from JLT to JVC, Dubai. The team was incredibly professional, punctual, and efficient. They handled all our furniture and items with great care and made the entire process smooth and stress-free.
+              Highly recommend them for anyone looking for reliable and hassle-free moving services in Dubai!"</p>
+          <div class="author">Mr. Vibhor Seth. &nbsp;&nbsp;&nbsp; - &nbsp;a year ago</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================
+       CONTACT / QUOTE FORM
+       BACKGROUND AREA — light neutral (see .contact in CSS).
+       Swap for an office/workspace photo if you want more
+       visual contrast against the light form card.
+  ========================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Let's Plan Your Move</h2>
+        <p>Reach out — our team responds fast.</p>
+      </div>
+
+      <div class="contact-inner">
+        <form class="form-card reveal" id="quoteForm" novalidate>
+          <div class="form-row">
+            <div class="field"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" placeholder="Jane Doe" required></div>
+            <div class="field"><label for="company">Company Name</label><input id="company" name="company" type="text" placeholder="Your Company Ltd."></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" placeholder="you@company.com" required></div>
+            <div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="+971 00 000 0000"></div>
+          </div>
+          <div class="form-row">
+            <div class="field full">
+              <label for="shipmentType">Shipment Type</label>
+              <select id="shipmentType" name="shipmentType">
+                <option>Air Freight</option>
+                <option>Ocean Freight</option>
+                <option>Ground Delivery</option>
+                <option>Warehousing</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full">
+              <label for="message">Message / Shipment Details</label>
+              <textarea id="message" name="message" placeholder="Tell us about your shipment or move — date, origin, destination, size, and timeline."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a Quote</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite">We typically respond within 1 business hour.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================
+     FOOTER
+========================== -->
+<footer>
+  <div class="footer-inner">
+    <a href="#top" class="logo">Air &amp; Sea Logistics LLC<span class="dot">.</span></a>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#trust">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>© 2026 Air &amp; Sea Logistics LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  /* =====================================================
+     HEADER SCROLL STATE
+     Toggles the solid/white header background once the
+     page has scrolled past 40px.
+  ===================================================== */
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  /* =====================================================
+     MOBILE MENU TOGGLE
+  ===================================================== */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* =====================================================
+     SCROLL REVEAL
+     Fades/rises any ".reveal" element into place once it
+     enters the viewport. Skipped entirely (shown immediately)
+     if the user prefers reduced motion.
+  ===================================================== */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion) {
+    revealEls.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  /* =====================================================
+     CONTACT FORM (front-end only)
+     Wire this up to a real backend or email service
+     (e.g. Formspree, EmailJS, a serverless function) —
+     right now it only shows a confirmation message.
+  ===================================================== */
+  const form = document.getElementById('quoteForm');
+  const formNote = document.getElementById('formNote');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    formNote.textContent = "Thanks — your request has been received. Our team will reach out within 1 business hour.";
+    formNote.style.color = '#00838f';
+    form.reset();
+  });
+
+  /* =====================================================
+     AUTOMATIC BACKGROUND-IMAGE SLIDER
+     Targets every .service-card.has-slider on the page.
+     - Reads the image list from data-slides (comma separated)
+     - Reads timing from data-interval / data-speed (ms)
+     - Builds .slide-bg layers (reusing the one already in the
+       markup as slide #1) and crossfades between them with
+       CSS opacity transitions — no external library needed
+     - Pauses automatically when the tab is hidden and respects
+       prefers-reduced-motion
+  ===================================================== */
+  (function initServiceCardSliders(){
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sliderCards = document.querySelectorAll('.service-card.has-slider');
+
+    sliderCards.forEach((card) => {
+      const urls = (card.dataset.slides || '')
+        .split(',')
+        .map(u => u.trim())
+        .filter(Boolean);
+
+      if (urls.length < 2) return; // nothing to cycle through
+
+      const intervalMs = parseInt(card.dataset.interval, 10) || 4000; // time each slide is shown
+      const speedMs = parseInt(card.dataset.speed, 10) || 1200;       // crossfade duration
+      card.style.setProperty('--slide-speed', speedMs + 'ms');
+
+      // Reuse the existing .slide-bg (first slide) if present, otherwise create it
+      let layers = Array.from(card.querySelectorAll('.slide-bg'));
+      if (layers.length === 0) {
+        const first = document.createElement('div');
+        first.className = 'slide-bg is-active';
+        first.style.backgroundImage = `url('${urls[0]}')`;
+        card.insertBefore(first, card.firstChild);
+        layers = [first];
+      }
+
+      // Build the remaining layers for each additional image
+      for (let i = layers.length; i < urls.length; i++) {
+        const layer = document.createElement('div');
+        layer.className = 'slide-bg';
+        layer.style.backgroundImage = `url('${urls[i]}')`;
+        card.insertBefore(layer, card.firstChild.nextSibling);
+        layers.push(layer);
+      }
+
+      let current = layers.findIndex(l => l.classList.contains('is-active'));
+      if (current === -1) current = 0;
+
+      let timerId = null;
+
+      const goToNext = () => {
+        const next = (current + 1) % layers.length;
+        layers[current].classList.remove('is-active');
+        layers[next].classList.add('is-active');
+        current = next;
+      };
+
+      const start = () => {
+        if (timerId || reduceMotionQuery.matches) return;
+        timerId = setInterval(goToNext, intervalMs);
+      };
+      const stop = () => {
+        if (timerId) { clearInterval(timerId); timerId = null; }
+      };
+
+      start();
+
+      // Pause while the tab isn't visible to save resources
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop(); else start();
+      });
+
+      // Respect a live change in reduced-motion preference
+      reduceMotionQuery.addEventListener('change', (e) => {
+        if (e.matches) stop(); else start();
+      });
+    });
+  })();
+
+  /* =====================================================
+     WHATSAPP REDIRECT FOR .whatsapp-btn
+     The href already points to the correct wa.me deep link
+     (works for both the WhatsApp mobile app and WhatsApp
+     Web/desktop automatically). This handler is a safety
+     net: it rebuilds the link from data attributes in case
+     the href is ever edited without updating the phone or
+     message, and guarantees new-tab behavior consistently.
+  ===================================================== */
+  (function initWhatsAppButtons(){
+    document.querySelectorAll('.whatsapp-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const phone = (btn.dataset.whatsappPhone || '').replace(/[^0-9]/g, '');
+        const message = btn.dataset.whatsappMessage || '';
+        if (!phone) return; // let the default href handle it
+
+        e.preventDefault();
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
