@@ -33,7 +33,8 @@
     --maxw: 1200px;
     --speed: .5s;            /* default transition speed used across hovers/reveals */
     --yellow: #FFD700;      /* optional accent color for future use */
-    --blue-rgb: 0, 0, 255; /* RGB values only For dropdown panel of navigation menu*/
+    /* --blue-rgb: 0, 0, 255; /* RGB values only For dropdown panel of navigation menu*/
+    --blue-gray: rgba(96, 125, 139, 0.5);
 
     /* Secondary button (WhatsApp) */
     --whatsapp-green: #25D366;
@@ -485,7 +486,7 @@
   }
           /* The dropdown panel that appears when the hamburger is clicked is controlled here: */
   .mobile-menu{
-    position:fixed; inset:0 0 auto 0;  background: rgba(var(--blue-rgb), 0.75); /* 0.5 = 50% opacity */;
+    position:fixed; inset:0 0 auto 0;  background: rgba(var(--blue-gray), 0.75); /* 0.5 = 50% opacity */;
     padding:100px 28px 40px; transform:translateY(-100%); transition:transform .4s ease;
     z-index:999; display:flex; flex-direction:column; gap:22px; height:100vh; overflow-y:auto;
   }
