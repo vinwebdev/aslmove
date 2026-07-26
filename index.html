@@ -35,6 +35,7 @@
     --yellow: #FFD700;      /* optional accent color for future use */
     /* --blue-rgb: 0, 0, 255; /* RGB values only For dropdown panel of navigation menu*/
     --blue-gray: rgba(96, 125, 139, 0.5);
+    --black: #000;
 
     /* Secondary button (WhatsApp) */
     --whatsapp-green: #25D366;
@@ -434,22 +435,7 @@
   @media (max-width:768px){
     .service-card{ height:300px; min-height:300px; border-radius:15px; }
     .service-card .content h3{ font-size:1.1rem; }
-  }
-  
-  /* Mobile - Part where to control the navigation color & text */  
-  @media (max-width: 680px){
-    section{ padding:64px 20px; }
-    .nav-links, .nav-cta .btn-primary{ display:none; }
-    .hamburger{ display:flex; }
-    .grid-3, .services-grid{ grid-template-columns:1fr; }
-    .form-row{ grid-template-columns:1fr; }
-    .hero{ padding-top:120px; }
-
-    /* siteHeader — override the semi-white header background with gray on mobile so the logo/company name stands out */
-    header{ background:rgba(60,60,60,0.55); /* gray, semi-transparent */ }
-    header.scrolled{ background:rgba(255,255,255,.96); /* keep normal white once scrolled */ }
-  }
-  
+  } 
   /* Large mobile */
   @media (max-width:576px){
     .service-card{ height:460px; min-height:260px; border-radius:14px; }
@@ -476,6 +462,8 @@
     .grid-3, .services-grid{ grid-template-columns:repeat(2,1fr); }
     .testimonials{ grid-template-columns:1fr; }
   }
+  
+  /* Mobile - Part where to control the navigation color & text */  
   @media (max-width: 680px){
     section{ padding:64px 20px; }
     .nav-links, .nav-cta .btn-primary{ display:none; }
@@ -484,6 +472,10 @@
     .form-row{ grid-template-columns:1fr; }
     .hero{ padding-top:120px; }
   }
+          /* siteHeader — override the semi-white header background with gray on mobile so the logo/company name stands out */
+    header{ background:rgba(60,60,60,0.55); /* gray, semi-transparent */ }
+    header.scrolled{ background:rgba(255,255,255,.96); /* keep normal white once scrolled */ }
+  
           /* The dropdown panel that appears when the hamburger is clicked is controlled here: */
   .mobile-menu{
     position:fixed; inset:0 0 auto 0;  background: rgba(var(--blue-gray), 0.75); /* 0.5 = 50% opacity */;
@@ -495,7 +487,7 @@
   .mobile-menu .btn{ margin-top:10px; }  /* mobileMenu — spacing for the CTA button inside the dropdown */
   .mobile-menu .btn-primary{
     width:100%;              /* make it full-width in the dropdown */
-    background:var(--royal-blue); /* mobileMenu — override CTA button color just for the dropdown */
+    background:var(--black); /* mobileMenu — override CTA button color just for the dropdown */
     }
   
   @media (prefers-reduced-motion: reduce){
