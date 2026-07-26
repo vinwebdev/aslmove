@@ -478,7 +478,7 @@
   
           /* The dropdown panel that appears when the hamburger is clicked is controlled here: */
   .mobile-menu{
-    position:fixed; inset:0 0 auto 0;  background: rgba(var(--blue-gray), 0.75); /* 0.5 = 50% opacity */;
+    position:fixed; inset:0 0 auto 0;  background: rgba(var(--blue-gray), 0.50); /* 0.5 = 50% opacity */;
     padding:100px 28px 40px; transform:translateY(-100%); transition:transform .4s ease;
     z-index:999; display:flex; flex-direction:column; gap:22px; height:100vh; overflow-y:auto;
   }
@@ -486,8 +486,8 @@
   .mobile-menu a{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; color:var(--white); }
   .mobile-menu .btn{ margin-top:10px; }  /* mobileMenu — spacing for the CTA button inside the dropdown */
   .mobile-menu .btn-primary{
-    width:80%;              /* make it full-width in the dropdown */
-    background:var(--royal-blue); /* mobileMenu — override CTA button color just for the dropdown */
+    width:100%;              /* make it full-width in the dropdown */
+    background:var(--black); /* mobileMenu — override CTA button color just for the dropdown */
     }
   
   @media (prefers-reduced-motion: reduce){
