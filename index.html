@@ -433,6 +433,25 @@
     .service-card{ height:300px; min-height:300px; border-radius:15px; }
     .service-card .content h3{ font-size:1.1rem; }
   }
+  
+  /* Mobile - Part where to control the navigation color & text */  
+  @media (max-width: 680px){
+    section{ padding:64px 20px; }
+    .nav-links, .nav-cta .btn-primary{ display:none; }
+    .hamburger{ display:flex; }
+    .grid-3, .services-grid{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .hero{ padding-top:120px; }
+
+    /* siteHeader — override the semi-white header background with gray on mobile so the logo/company name stands out */
+    header{
+        background:rgba(60,60,60,0.55); /* gray, semi-transparent */
+    }
+    header.scrolled{
+        background:rgba(255,255,255,.96); /* keep normal white once scrolled */
+    }
+  }
+  
   /* Large mobile */
   @media (max-width:576px){
     .service-card{ height:460px; min-height:260px; border-radius:14px; }
